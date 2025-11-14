@@ -1,0 +1,14 @@
+domain name service
+it knows the address of all webpages (for example google.com's -> IP address)
+
+1. domain name entry : users types a domain into the browser.
+2.dns querry: thr browser sends a dns query to resolve the domain into an IP address.
+3.dns server:provides the corrct IP address for the domain
+4.browser connects:the browser uses the IP to connect to the web server and loads the website 
+
+
+//how to dns actually work?
+
+1. Root dns: acts a sthe starting point for dns resolution. it directs the queries to the (TLD server)
+2.TDL : handles the top level domains .e.g. .com, .net 
+3.Authoritive dns: contains the actual IP address of the domain and answers DNS queries with this information(e.g..,cloudflare, google dns)

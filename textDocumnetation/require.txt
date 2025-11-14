@@ -1,0 +1,23 @@
+purpose:
+imports modules in node.js
+
+caching:
+modules are cached after the first require call.
+
+.js:
+is already added and is not needed at the end of the modules.
+
+
+path resolution:
+node.js searches for modules in core, node_modules, and file paths.
+
+
+//syntax:
+//built in 
+const module_name = require('module');
+
+//third party
+const http = require('http');
+
+//load custom module
+const myModule  = require('module');

@@ -1,0 +1,15 @@
+
+http: 
+1.facilitates communication btw a web browser and a server to transfer web pages
+2.sends data in plain text 
+3.used for basic web browsing
+
+https:
+1.secure version of http-> encrypts data for secure communication
+2.uses SSl/tls to encrypt data
+3.used in online banking and e commerce
+
+
+TCP:
+1.ensures reliable , error checked and ordered data reaches
+2.eastablishes a connection before transfering actual data.

@@ -1,0 +1,129 @@
+we  can log limited things which we require.
+we dont have to log everything 
+for example :  console.log(res); ❌
+
+
+🌍 When someone sends a request to your server…
+
+The browser sends information like:
+
+What URL they want
+
+Which HTTP method they're using
+
+Extra information (headers)
+
+Node.js gives these details to you in the req (request) object.
+
+So:
+
+req.url
+req.method
+req.headers
+
+
+are simply 3 important pieces of information about the request.
+
+1️⃣ req.url → “What path did the client request?”
+
+Example:
+
+If the user opens:
+
+http://localhost:3000/about
+
+
+Then:
+
+req.url  // "/about"
+
+
+If the user opens:
+
+http://localhost:3000/products?id=10
+
+
+Then:
+
+req.url  // "/products?id=10"
+
+
+It gives you the route/path the client is trying to access.
+
+2️⃣ req.method → “How is the client requesting data?”
+
+HTTP methods:
+
+Method	Meaning
+GET	Asking for data (like opening a page)
+POST	Sending data to your server
+PUT	Updating data
+DELETE	Deleting data
+
+Examples:
+
+If user opens your site in browser:
+
+req.method  // "GET"
+
+
+If user submits a form:
+
+req.method  // "POST"
+
+3️⃣ req.headers → “Extra info sent by browser or client”
+
+Headers are key-value pairs that describe the request.
+
+Example headers:
+
+{
+  host: "localhost:3000",
+  user-agent: "Chrome",
+  accept: "text/html",
+  connection: "keep-alive"
+}
+
+
+Headers tell Node.js:
+
+what browser is used
+
+what content type the client accepts
+
+cookies
+
+authorization tokens
+
+content-length
+
+content-type (json, html, form-data)
+
+and much more
+
+📦 Example in action
+
+If someone opens:
+
+http://localhost:3000/home
+
+
+You print:
+
+console.log(req.url, req.method, req.headers);
+
+
+You might see:
+
+/home GET {
+  host: 'localhost:3000',
+  user-agent: 'Mozilla/5.0 Chrome/142',
+  accept: 'text/html,application/json',
+  connection: 'keep-alive'
+}
+
+🎯 Summary (very simple)
+Code	Meaning
+req.url	Which URL the user requested
+req.method	What action the user wants (GET, POST, etc.)
+req.headers	Extra information sent from browser/client

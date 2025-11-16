@@ -1,0 +1,103 @@
+🎓 📘 What is Routing? (Simple Explanation)
+
+Routing means:
+
+➡️ Handling different URLs differently
+For example:
+
+/ → Homepage
+
+/about → About page
+
+/contact → Contact page
+
+In Node.js (without Express), we do routing manually using:
+
+req.url
+req.method
+
+
+We check what URL the user requested → and send the correct response.
+
+⭐ 1. Basic Routing Example
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  res.setHeader("Content-Type", "text/html");
+
+  if (req.url === "/") {
+    res.write("<h1>Welcome to Home Page</h1>");
+  } 
+  else if (req.url === "/about") {
+    res.write("<h1>About Us Page</h1>");
+  } 
+  else if (req.url === "/contact") {
+    res.write("<h1>Contact Page</h1>");
+  } 
+  else {
+    res.write("<h1>404 - Page Not Found</h1>");
+  }
+
+  res.end();
+});
+
+server.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
+
+⭐ 2. How This Works (Step-by-Step)
+🔹 Step 1 — User types a URL
+
+Example:
+
+http://localhost:3000/about
+
+🔹 Step 2 — Node.js receives the request
+
+req.url becomes → /about
+
+🔹 Step 3 — Your code checks the route
+if (req.url === "/about") { ... }
+
+🔹 Step 4 — Send correct response
+
+Node sends HTML related to that page.
+
+⭐ 3. Routing with Methods (GET, POST)
+
+Sometimes same URL behaves differently based on method:
+
+Example:
+
+GET /contact → Show form
+
+POST /contact → Save form data
+
+Basic example:
+
+if (req.url === "/contact" && req.method === "GET") {
+  res.write("<h1>Contact Form</h1>");
+}
+
+if (req.url === "/contact" && req.method === "POST") {
+  res.write("<h1>Form Submitted</h1>");
+}
+
+
+This is how backend logic works.
+
+⭐ 4. Summary of Routing Concepts
+Concept	Meaning
+req.url	tells which page user requested
+req.method	GET / POST / PUT / DELETE
+Routing	serving different content for different URLs
+404 route	fallback if no route matches
+⭐ 5. Professional Routing (When using Express)
+
+Later, with Express.js routing becomes MUCH easier:
+
+app.get("/", (req, res) => res.send("Home"));
+app.get("/about", (req, res) => res.send("About"));
+
+
+But learning manual routing first builds solid fundamentals.

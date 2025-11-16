@@ -1,0 +1,106 @@
+When we build a server using Node.js, we not only receive requests from the browser — we also need to send a response back. This topic teaches you how to send HTML, text, or JSON as a response using the http module.
+
+⭐ 1. Creating a Server
+
+We use the built-in http module:
+
+const server = http.createServer((req, res) => {
+
+
+Here, Node gives you two important objects:
+
+req → what the user is asking (URL, method, headers)
+
+res → what you send back to the user
+
+Think of req as student asking a question
+and res as teacher giving the answer.
+
+⭐ 2. Setting Response Header
+
+Before sending anything, we tell the browser what type of content we are sending:
+
+res.setHeader("Content-Type", "text/html");
+
+
+Why?
+Because browsers need to understand whether you’re sending:
+
+HTML
+
+JSON
+
+plain text
+
+files
+
+Here we say:
+📌 “Hey browser, I’m sending HTML.”
+
+⭐ 3. Writing the Response
+
+We use res.write() to send the actual content:
+
+res.write("<html>");
+res.write("<head><title>Complete Coding</title></head>");
+res.write("<body><h1>Like / Share / Subscribe</h1></body>");
+res.write("</html>");
+
+
+This is like giving the browser the HTML code of a webpage.
+
+You can send multiple lines — Node joins them together and sends one final output.
+
+⭐ 4. Ending the Response
+
+Finally, we must close the response:
+
+res.end();
+
+
+This tells Node:
+
+✔ I’m done sending content
+✔ Send everything to the browser
+✔ Finish the request
+
+If we forget res.end(), the page will never stop loading.
+
+⭐ 5. Listening on a Port
+
+To make the server available:
+
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
+
+
+This starts the server, usually on port 3000.
+
+🎯 Final Understanding (What you learned)
+
+Node.js can act as a web server
+
+req = incoming request
+
+res = outgoing response
+
+Use setHeader() to define the response type
+
+Use res.write() to send content
+
+Use res.end() to finish the response
+
+The browser shows whatever HTML we send
+
+This is the foundation of handling responses in Node.js — every website you build will use these exact concepts.
+
+
+
+
+  res.setHeader("Content-Type", "text/html");
+  res.write("<html>");
+  res.write("<head><title>My first Page</title></head>");
+  res.write("<body><h1>Hello from my Node.js Server!</h1></body>");
+  res.write("</html>");
+  res.end();

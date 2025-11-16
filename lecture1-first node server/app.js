@@ -11,7 +11,7 @@ const http = require("http");
 //the above code can be written as below aslo in modern way
 
 const server = http.createServer((req, res) => {
-  console.log(req);
+  console.log(req.url, req.method, req.headers);
   // process.exit();
 });
 

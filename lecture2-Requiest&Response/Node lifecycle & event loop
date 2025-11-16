@@ -1,0 +1,64 @@
+1. Incoming Requests
+
+Clients send requests to the Node.js server.
+
+These requests arrive at the Event Queue.
+
+2. Event Queue
+
+All incoming tasks (like HTTP requests) are placed in the Event Queue.
+
+The queue holds tasks waiting to be processed.
+
+If the task is simple (CPU-light), it is executed directly by the Event Loop.
+
+3. Event Loop (Heart of Node.js)
+
+The Event Loop continuously checks the Event Queue.
+
+It picks tasks one by one.
+
+For non-blocking operations (database query, file read/write, network calls), the Event Loop delegates the work to the Thread Pool instead of blocking the main thread.
+
+4. Thread Pool
+
+Node.js uses libuv–based Thread Pool (default size = 4 threads).
+
+The Thread Pool handles heavy/async operations:
+
+Database access
+
+File system tasks
+
+Network operations
+
+Encryption / compression
+
+While these operations run in background threads, the Event Loop remains free to handle other requests.
+
+5. External Resources
+
+The Thread Pool interacts with:
+
+Databases
+
+File System
+
+Network Services
+
+Other OS-level resources
+
+6. Operation Completed
+
+Once a background task finishes, the result is pushed back to the Event Queue.
+
+The Event Loop picks it up again.
+
+It executes the callback/promise resolution.
+
+Response is finally sent back to the client.
+
+📝 Summary (Short & Clear)
+
+The Node.js server processes incoming requests through an Event Loop, which decides what to handle immediately and what to delegate. Simple operations are processed directly, while complex or slow operations are offloaded to a Thread Pool. The Thread Pool communicates with databases, file systems, and networks. When those operations finish, their results go back to the Event Loop, which completes the request and sends a response.
+This design allows Node.js to be fast, non-blocking, and highly scalable, even though it runs on a single main thread.

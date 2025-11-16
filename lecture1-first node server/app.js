@@ -12,6 +12,7 @@ const http = require("http");
 
 const server = http.createServer((req, res) => {
   console.log(req);
+  // process.exit();
 });
 
 //we have created server hence we need a listener to those requests
@@ -22,4 +23,5 @@ const server = http.createServer((req, res) => {
 const port = 3000;
 server.listen(port, () => {
   console.log(`server is running on port ${port}`);
+  //  process.exit();  //=>this helps to exit from the event loop
 });

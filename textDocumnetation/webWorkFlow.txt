@@ -1,0 +1,5 @@
+The essential steps for a typical web request are:
+Client initiates request: A user enters a URL, and the browser begins the network process. 
+DNS Resolution: The browser finds the IP address for the domain name using a DNS server. 
+Request/Response Cycle: A TCP connection is established, the browser sends an HTTP request, the server processes it and sends an HTTP response. 
+Rendering: The browser receives the response data and renders the content (e.g., HTML, images) for the user to view. 

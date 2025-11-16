@@ -1,0 +1,7 @@
+1.Node Lifecycle and event loop
+2.how to exit Event loop
+3.Understand Request Object
+4.Sending response
+5.Routing requests
+6.Talking user input
+7.Redirecting requests

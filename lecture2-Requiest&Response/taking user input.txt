@@ -1,0 +1,2 @@
+creating forms to take input from users .
+simulating client server interaction by taking input from user and generating some output

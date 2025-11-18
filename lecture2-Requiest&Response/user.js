@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
     res.write("<body><h1>Welcome to home</h1>");
 
     // Form with correct labels and radio buttons
-    res.write("<form>");
+    res.write('<form action="/submit-details" method="POST">');
     res.write('<input type="text" name="username" placeholder="name"><br><br>');
 
     res.write('<input type="radio" id="male" name="gender" value="male">');

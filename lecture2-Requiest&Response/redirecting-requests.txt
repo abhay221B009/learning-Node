@@ -1,0 +1,76 @@
+Redirecting requests means sending the user from one URL to another URL automatically.
+
+In simple terms:
+
+User sends a request → server tells browser to go to another page → browser loads the new page.
+
+🔥 Real-life example in Node.js
+
+You submit a form on /submit, but you don’t want to show the result on /submit.
+Instead, you want to redirect the user back to / (home page).
+
+Example:
+
+res.statusCode = 302;        // 302 = temporary redirect
+res.setHeader("Location", "/");
+return res.end();
+
+
+What this does:
+
+Receives request at /submit
+
+Sends a redirect response to the browser
+
+Browser automatically requests /
+
+User ends up on the home page again
+
+🔍 Why do we redirect?
+👉 1. After form submission
+
+You don’t want the user to re-submit the form if the page refreshes.
+
+👉 2. Cleaner URLs
+
+Submit at /add-user but show result at /users.
+
+👉 3. Security / Access control
+
+If a user is not logged in:
+
+/dashboard → redirect to → /login
+
+👉 4. To force user to a new page
+
+Old page moved?
+
+/old → redirect → /new
+
+🧠 Browser behavior
+
+When the server sends this response:
+
+HTTP/1.1 302 Found
+Location: /new-path
+
+
+The browser does:
+
+GET /new-path
+
+
+Automatically—without asking the user.
+
+🧪 Simple redirect example in your Node server
+if (req.url === "/submit") {
+  res.statusCode = 302;
+  res.setHeader("Location", "/");
+  return res.end();
+}
+
+⚡ In summary:
+Term	Meaning
+Redirect	Server tells browser to load a new URL
+How?	By sending Location header + status 302
+Why?	After forms, login, moving pages, preventing resubmit, cleaner UX
